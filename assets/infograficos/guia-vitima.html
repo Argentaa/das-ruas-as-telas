@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box de Serviços - O Que Fazer em Caso de Crime Digital</title>
+  
+  <!-- Importação das Fontes Montserrat e Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    /* Container do Box de Serviços */
+    .service-box-wrapper {
+      width: 100%;
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      background: #ffffff;
+      border: 2px solid #9A0D1C;
+      border-radius: 12px;
+      padding: 22px 18px 14px 18px;
+      box-shadow: 0 4px 15px rgba(154, 13, 28, 0.08);
+    }
+
+    .service-box-header {
+      font-family: 'Montserrat', sans-serif;
+      color: #9A0D1C;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .service-box-subtitle {
+      font-family: 'Poppins', sans-serif;
+      color: #333333;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    /* Blocos Informativos */
+    .service-section {
+      margin-bottom: 14px;
+      padding: 12px 14px;
+      background-color: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      color: #9A0D1C;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .section-text {
+      font-family: 'Poppins', sans-serif;
+      color: #000000;
+      font-size: 0.76rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .highlight-note {
+      background-color: #fdf2f3;
+      border-left: 3px solid #9A0D1C;
+      padding: 8px 10px;
+      border-radius: 4px;
+      margin-top: 8px;
+      font-size: 0.73rem;
+      color: #000000;
+      text-align: center;
+    }
+
+    /* Grid de Canais Oficiais de Atendimento */
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .channel-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e2e2;
+      border-radius: 8px;
+      padding: 10px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 105px;
+    }
+
+    .channel-title {
+      font-family: 'Montserrat', sans-serif;
+      color: #9A0D1C;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .channel-desc {
+      font-family: 'Poppins', sans-serif;
+      color: #000000;
+      font-size: 0.7rem;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    .channel-link {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: #9A0D1C;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .channel-link:hover {
+      background-color: #720914;
+    }
+
+    /* Rodapé da Assinatura */
+    .service-box-footer {
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid #eeeeee;
+      font-family: 'Poppins', sans-serif;
+      color: #777777;
+      font-size: 0.72rem;
+      text-align: center;
+    }
+
+    @media (max-width: 650px) {
+      .channels-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="service-box-wrapper">
+    <h1 class="service-box-header">Guia de Orientação à Vítima</h1>
+    <p class="service-box-subtitle">Passo a passo e canais oficiais para registrar ocorrências digitais no Rio Grande do Sul</p>
+
+    <!-- Recomendação Principal -->
+    <div class="service-section">
+      <div class="section-title">Atendimento Presencial Imediato</div>
+      <div class="section-text">
+        Ao constatar que foi vítima de golpe ou fraude financeira, dirija-se <strong>pessoalmente e com rapidez</strong> à Delegacia de Polícia de Pronto Atendimento mais próxima no RS.
+      </div>
+      <div class="highlight-note">
+        <strong>Por que ir presencialmente?</strong> A rapidez na comunicação presencial permite que a equipe policial inicie imediatamente os procedimentos de investigação e pedidos cautelares para tentativa de bloqueio de valores.
+      </div>
+    </div>
+
+    <!-- Recomendações de Ação -->
+    <div class="service-section">
+      <div class="section-title">O Que Fazer Antes de Registrar</div>
+      <div class="section-text">
+        Guarde e organize todos os comprovantes de transação (PIX/transferências), prints de conversas, e-mails, números de telefone envolvidos e dados do recebedor. Não apague o histórico de mensagens.
+      </div>
+    </div>
+
+    <!-- Canais Oficiais de Atendimento -->
+    <div class="service-section">
+      <div class="section-title">Canais Digitais e de Emergência</div>
+      <div class="channels-grid">
+        
+        <div class="channel-card">
+          <div>
+            <div class="channel-title">Delegacia Online RS</div>
+            <div class="channel-desc">Registro de ocorrências pela internet para casos sem urgência imediata.</div>
+          </div>
+          <a href="https://www.delegaciaonline.rs.gov.br" target="_blank" rel="noopener noreferrer" class="channel-link">Acessar Site</a>
+        </div>
+
+        <div class="channel-card">
+          <div>
+            <div class="channel-title">Brigada Militar (190)</div>
+            <div class="channel-desc">Atendimento de emergência e apoio em situações de flagrante.</div>
+          </div>
+          <a href="tel:190" class="channel-link">Ligar 190</a>
+        </div>
+
+        <div class="channel-card">
+          <div>
+            <div class="channel-title">Disque-Denúncia (181)</div>
+            <div class="channel-desc">Canal da SSP-RS para repasse anônimo de informações sobre golpistas.</div>
+          </div>
+          <a href="tel:181" class="channel-link">Ligar 181</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="service-box-footer">
+      Por Amália Miura e Marina Lima | Laboratório para Reportagem Convergente
+    </div>
+  </div>
+
+</body>
+</html>

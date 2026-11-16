@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infográfico: Crimes Virtuais vs. Presenciais no RS</title>
+  
+  <!-- Fontes Google: Montserrat e Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Biblioteca Chart.js para interatividade -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #111111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+    }
+    .infographic-card {
+      width: 100%;
+      max-width: 850px;
+      height: 100%;
+      max-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px 22px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .title-main {
+      font-family: 'Montserrat', sans-serif;
+      color: #9A0D1C;
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: -0.3px;
+      margin-bottom: 2px;
+    }
+    .subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      color: #333333;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .chart-container {
+      position: relative;
+      flex-grow: 1;
+      width: 100%;
+      min-height: 250px;
+    }
+    footer {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      color: #666666;
+      text-align: center;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid #f0f0f0;
+      line-height: 1.4;
+    }
+    footer strong {
+      color: #333333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="infographic-card">
+  <div>
+    <h1 class="title-main">A Migração do Crime no Rio Grande do Sul</h1>
+    <p class="subtitle">Evolução comparativa dos crimes virtuais vs. presenciais (2018 a 2026)</p>
+  </div>
+  
+  <div class="chart-container">
+    <canvas id="rsCrimesChart"></canvas>
+  </div>
+
+  <footer>
+    Por Amália Miura e Marina Lima | Laboratório para Reportagem Convergente &nbsp;•&nbsp; <strong>Fontes:</strong> SSP/RS e FBSP
+  </footer>
+</div>
+
+<script>
+  const ctx = document.getElementById('rsCrimesChart').getContext('2d');
+
+  // Detalhamento descritivo para as tooltips interativas
+  const descVirtuais = [
+    "2018 (Pré-pandemia): 18,5 mil registros de fraudes e estelionatos no RS.",
+    "2021 (Auge Pandemia): 62,0 mil casos. Disparada dos golpes com Pix e e-commerce.",
+    "2023 (Pós-pandemia): 80,5 mil registros. Consolidação do ambiente digital.",
+    "2025-2026 (Atual): 83,7 mil registros. Maior volume entre os crimes patrimoniais no Estado."
+  ];
+
+  const descPresenciais = [
+    "2018 (Pré-pandemia): 115,0 mil roubos/furtos de rua e veículos no RS.",
+    "2021 (Auge Pandemia): 72,0 mil casos. Queda acentuada devido ao isolamento.",
+    "2023 (Pós-pandemia): 58,0 mil casos. Manutenção da tendência de queda.",
+    "2025-2026 (Atual): 42,0 mil casos. Destaque 2026: 0 homicídios em Frederico Westphalen (FW) este ano."
+  ];
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['2018\n(Pré-pandemia)', '2021\n(Auge Pandemia)', '2023\n(Pós-pandemia)', '2025-2026\n(Dias Atuais)'],
+      datasets: [
+        {
+          label: 'Crimes Virtuais (Estelionatos e Golpes Digitais)',
+          data: [18.5, 62.0, 80.5, 83.7],
+          borderColor: '#9A0D1C',
+          backgroundColor: '#9A0D1C',
+          borderWidth: 3,
+          pointRadius: 6,
+          pointHoverRadius: 9,
+          pointBackgroundColor: '#9A0D1C',
+          tension: 0.25
+        },
+        {
+          label: 'Crimes Presenciais (Roubos e Furtos de Rua/Veículos)',
+          data: [115.0, 72.0, 58.0, 42.0],
+          borderColor: '#1D3557',
+          backgroundColor: '#1D3557',
+          borderWidth: 3,
+          pointRadius: 6,
+          pointHoverRadius: 9,
+          pointBackgroundColor: '#1D3557',
+          tension: 0.25
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            font: { family: 'Poppins', size: 11, weight: '500' },
+            color: '#111111',
+            usePointStyle: true,
+            padding: 12
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(25, 25, 25, 0.92)',
+          titleFont: { family: 'Montserrat', size: 12, weight: '700' },
+          bodyFont: { family: 'Poppins', size: 11 },
+          padding: 10,
+          cornerRadius: 6,
+          callbacks: {
+            label: function(context) {
+              const datasetIdx = context.datasetIndex;
+              const idx = context.dataIndex;
+              const val = context.raw;
+              const note = datasetIdx === 0 ? descVirtuais[idx] : descPresenciais[idx];
+              return [
+                ` Volume: ${val} mil ocorrências`,
+                ` Detalhe: ${note}`
+              ];
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: {
+            font: { family: 'Poppins', size: 10, weight: '500' },
+            color: '#333333'
+          }
+        },
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Milhares de Ocorrências no RS',
+            font: { family: 'Poppins', size: 10, weight: '600' },
+            color: '#555555'
+          },
+          ticks: {
+            font: { family: 'Poppins', size: 10 },
+            color: '#666666',
+            callback: function(val) { return val + 'k'; }
+          },
+          grid: { color: '#f0f0f0' }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
