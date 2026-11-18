@@ -13,7 +13,7 @@
   const nav = document.getElementById('siteNav');
   const hero = document.querySelector('.hero');
   const progressBar = document.querySelector('.read-progress span');
-  const sections = [...document.querySelectorAll('#abertura, #audio, #ruas, #golpes, #cyberbullying, #dados, #podcast')];
+  const sections = [...document.querySelectorAll('#abertura, #audio, #ruas, #golpes, #cyberbullying, #dados, #instagram')];
   const navLinks = [...document.querySelectorAll('.nav-link')];
 
   /* ------------------------------ 1. divisores de pixel ------------------------------ */

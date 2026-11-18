@@ -18,7 +18,7 @@
 
   --wrap: 1180px;
   --col: 700px;
-  --nav-h: 60px;
+  --nav-h: 96px;
 
   --ease: cubic-bezier(.22,.68,.28,1);
 }
@@ -78,24 +78,27 @@ button{ font: inherit; }
   width: 100%; max-width: var(--wrap);
   margin-inline: auto;
   padding-inline: clamp(16px, 4vw, 40px);
-  display: flex; align-items: center; gap: clamp(14px, 3vw, 40px);
+  padding-block: 10px;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+  gap: 8px;
 }
 .nav-brand{
-  display: inline-flex; align-items: center; gap: 9px;
+  display: inline-flex; align-items: center; gap: 10px;
   font-family: 'Poppins', sans-serif;
-  font-weight: 700; font-size: .78rem;
+  font-weight: 700; font-size: .86rem;
   letter-spacing: .13em; text-transform: uppercase;
   color: #fff; white-space: nowrap;
   transition: color .35s var(--ease);
 }
-.brand-dot{
-  width: 8px; height: 8px; background: var(--vermelho);
-  display: inline-block; flex: none;
+.brand-mark{
+  width: 30px; height: 30px; flex: none; display: block;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.16);
 }
 .nav-list{
   list-style: none; margin: 0; padding: 0;
   display: flex; align-items: center; gap: clamp(12px, 1.6vw, 20px);
-  margin-left: auto;
+  width: 100%;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -566,39 +569,36 @@ button{ font: inherit; }
 }
 
 /* ==========================================================================
-   PODCAST
+   PODCAST (dentro do corpo do texto)
    ========================================================================== */
-.podcast{
-  background: #0b0b0b;
-  color: #fff;
-  padding-block: clamp(70px, 9vw, 120px);
-}
-.podcast-card{
+.podcast-inline{
+  margin-top: clamp(34px, 4.4vw, 52px);
+  max-width: var(--col);
   border: 1px solid rgba(255,255,255,.14);
   background:
     radial-gradient(120% 140% at 0% 0%, rgba(154,13,28,.35) 0%, rgba(154,13,28,0) 55%),
     #101010;
-  padding: clamp(26px, 4.4vw, 52px);
-  max-width: 860px;
+  color: #fff;
+  padding: clamp(24px, 3.6vw, 42px);
 }
-.podcast-title{
+.podcast-inline-title{
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
-  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
   line-height: .95;
   letter-spacing: -.02em;
   text-transform: uppercase;
   margin: 0;
   color: #fff;
 }
-.podcast-text{
+.podcast-inline-text{
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.7;
   color: rgba(255,255,255,.72);
   max-width: 52ch;
-  margin: 16px 0 0;
+  margin: 14px 0 0;
 }
 .podcast-slot{
   margin-top: clamp(24px, 3.4vw, 36px);
@@ -619,6 +619,71 @@ button{ font: inherit; }
   letter-spacing: .16em; text-transform: uppercase;
   color: rgba(255,255,255,.42);
 }
+
+/* ==========================================================================
+   INSTAGRAM
+   ========================================================================== */
+.instagram{
+  background: #0b0b0b;
+  color: #fff;
+  padding-block: clamp(64px, 8vw, 112px);
+}
+.insta-inner{
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.25fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+.insta-title{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 2.9vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  margin: 0;
+  color: #fff;
+}
+.insta-handle{ color: #ff5a6a; }
+.insta-text{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.72);
+  max-width: 46ch;
+  margin: 14px 0 0;
+}
+.insta-cta{
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 24px;
+  padding: 12px 20px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  font-family: 'Poppins', sans-serif;
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #fff; text-decoration: none;
+  transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+.insta-cta:hover{ background: #fff; color: #000; border-color: #fff; }
+.insta-grid{
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1vw, 12px);
+}
+.insta-post a{
+  display: block; position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #151515;
+}
+.insta-post img{
+  width: 100%; height: 100%; display: block;
+  object-fit: cover;
+  transition: transform .5s var(--ease), opacity .3s var(--ease);
+}
+.insta-post a:hover img{ transform: scale(1.05); }
 
 /* ==========================================================================
    CRÉDITOS
@@ -706,11 +771,14 @@ body[data-preview="off"] .preview-chip{ display: none; }
    RESPONSIVO
    ========================================================================== */
 @media (max-width: 900px){
-  :root{ --nav-h: 54px; }
-  .brand-text{ display: none; }
-  .nav-inner{ gap: 12px; padding-inline: 16px; }
-  .nav-list{ gap: 16px; margin-left: 0; flex: 1 1 auto; }
+  :root{ --nav-h: 86px; }
+  .nav-inner{ gap: 7px; padding-inline: 16px; padding-block: 8px; }
+  .nav-brand{ font-size: .78rem; gap: 8px; }
+  .brand-mark{ width: 26px; height: 26px; }
+  .nav-list{ gap: 16px; margin-left: 0; flex: 1 1 auto; width: 100%; }
   .nav-link{ font-size: .66rem; letter-spacing: .08em; }
+  .insta-inner{ grid-template-columns: minmax(0, 1fr); }
+  .insta-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hero-scroll{ display: none; }
   .hero-sub{ max-width: 30ch; }
   .pull{ max-width: 100%; }
@@ -718,6 +786,7 @@ body[data-preview="off"] .preview-chip{ display: none; }
 }
 
 @media (max-width: 600px){
+  .insta-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
   body{ font-size: 17px; }
   .pixels{ --cell: 16px; }
   .hero{ min-height: 92svh; }
