@@ -33,10 +33,9 @@
       width: 100%;
       max-width: 850px;
       height: 100%;
-      max-height: 520px;
+      max-height: 560px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       padding: 18px 22px;
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -62,9 +61,15 @@
     }
     .chart-container {
       position: relative;
-      flex-grow: 1;
+      flex: 1 1 auto;
       width: 100%;
-      min-height: 250px;
+      min-height: 220px;
+    }
+    .chart-container canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100% !important;
+      height: 100% !important;
     }
     footer {
       font-family: 'Poppins', sans-serif;
@@ -78,6 +83,15 @@
     }
     footer strong {
       color: #333333;
+    }
+
+    /* telas estreitas: tipografia menor e legenda curta */
+    @media (max-width: 560px) {
+      html, body { padding: 8px; }
+      .infographic-card { padding: 14px 12px; border-radius: 10px; max-height: none; }
+      .title-main { font-size: 1rem; line-height: 1.15; }
+      .subtitle { font-size: 0.72rem; margin-bottom: 6px; }
+      footer { font-size: 0.62rem; margin-top: 8px; padding-top: 6px; }
     }
   </style>
 </head>
@@ -101,6 +115,13 @@
 <script>
   const ctx = document.getElementById('rsCrimesChart').getContext('2d');
 
+  // rótulos da legenda: versão curta quando o container é estreito (iframe, não a janela)
+  const larguraContainer = () => (document.querySelector('.chart-container') || {}).clientWidth || window.innerWidth;
+  const ehEstreito = () => larguraContainer() < 520;
+  const rotulosLegenda = () => ehEstreito()
+    ? ['Virtuais (golpes digitais)', 'Presenciais (rua e veículos)']
+    : ['Crimes Virtuais (Estelionatos e Golpes Digitais)', 'Crimes Presenciais (Roubos e Furtos de Rua/Veículos)'];
+
   // Detalhamento descritivo para as tooltips interativas
   const descVirtuais = [
     "2018 (Pré-pandemia): 18,5 mil registros de fraudes e estelionatos no RS.",
@@ -116,13 +137,13 @@
     "2025-2026 (Atual): 42,0 mil casos. Destaque 2026: 0 homicídios em Frederico Westphalen (FW) este ano."
   ];
 
-  new Chart(ctx, {
+  const chart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: ['2018\n(Pré-pandemia)', '2021\n(Auge Pandemia)', '2023\n(Pós-pandemia)', '2025-2026\n(Dias Atuais)'],
       datasets: [
         {
-          label: 'Crimes Virtuais (Estelionatos e Golpes Digitais)',
+          label: rotulosLegenda()[0],
           data: [18.5, 62.0, 80.5, 83.7],
           borderColor: '#9A0D1C',
           backgroundColor: '#9A0D1C',
@@ -133,7 +154,7 @@
           tension: 0.25
         },
         {
-          label: 'Crimes Presenciais (Roubos e Furtos de Rua/Veículos)',
+          label: rotulosLegenda()[1],
           data: [115.0, 72.0, 58.0, 42.0],
           borderColor: '#1D3557',
           backgroundColor: '#1D3557',
@@ -203,6 +224,18 @@
         }
       }
     }
+  });
+  // troca a legenda e o corpo da fonte se a tela cruzar o limite
+  let estreitoAtual = ehEstreito();
+  window.addEventListener('resize', () => {
+    const agora = ehEstreito();
+    if (agora === estreitoAtual) return;
+    estreitoAtual = agora;
+    const r = rotulosLegenda();
+    chart.data.datasets[0].label = r[0];
+    chart.data.datasets[1].label = r[1];
+    chart.options.plugins.legend.labels.font.size = agora ? 10 : 11;
+    chart.update();
   });
 </script>
 
