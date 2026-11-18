@@ -91,9 +91,8 @@ button{ font: inherit; }
   transition: color .35s var(--ease);
 }
 .brand-mark{
-  width: 30px; height: 30px; flex: none; display: block;
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px rgba(255,255,255,.16);
+  height: 32px; width: auto; flex: none; display: block;
+  color: currentColor;
 }
 .nav-list{
   list-style: none; margin: 0; padding: 0;
@@ -694,6 +693,11 @@ button{ font: inherit; }
   gap: clamp(24px, 4vw, 56px);
 }
 .credits-block{ min-width: 150px; }
+.credits-logo{ margin-right: auto; }
+.credits-logo img{
+  display: block; width: 220px; height: auto;
+  filter: invert(1);
+}
 .credits-kicker{
   font-family: 'Poppins', sans-serif;
   font-size: .62rem; font-weight: 600;
@@ -774,7 +778,7 @@ body[data-preview="off"] .preview-chip{ display: none; }
   :root{ --nav-h: 86px; }
   .nav-inner{ gap: 7px; padding-inline: 16px; padding-block: 8px; }
   .nav-brand{ font-size: .78rem; gap: 8px; }
-  .brand-mark{ width: 26px; height: 26px; }
+  .brand-mark{ height: 26px; }
   .nav-list{ gap: 16px; margin-left: 0; flex: 1 1 auto; width: 100%; }
   .nav-link{ font-size: .66rem; letter-spacing: .08em; }
   .insta-inner{ grid-template-columns: minmax(0, 1fr); }
