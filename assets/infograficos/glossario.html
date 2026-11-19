@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glossário</title>
+  
+  <!-- Importação das Fontes Montserrat e Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .glossary-wrapper {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .glossary-header {
+      font-family: 'Montserrat', sans-serif;
+      color: #9A0D1C;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .glossary-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .glossary-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e2e2;
+      border-radius: 8px;
+      padding: 14px 18px;
+      text-align: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glossary-card:hover {
+      border-color: #9A0D1C;
+      box-shadow: 0 4px 12px rgba(154, 13, 28, 0.1);
+    }
+
+    .glossary-term {
+      font-family: 'Montserrat', sans-serif;
+      color: #9A0D1C;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .glossary-def {
+      font-family: 'Poppins', sans-serif;
+      color: #000000;
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glossary-wrapper">
+    <h1 class="glossary-header">Glossário</h1>
+
+    <div class="glossary-grid">
+      
+      <!-- Termo 1 -->
+      <div class="glossary-card">
+        <div class="glossary-term">Empréstimo Consignado</div>
+        <div class="glossary-def">
+          Modalidade de crédito em que as parcelas são descontadas diretamente da folha de pagamento ou benefício.
+        </div>
+      </div>
+
+      <!-- Termo 2 -->
+      <div class="glossary-card">
+        <div class="glossary-term">Portabilidade de Contrato</div>
+        <div class="glossary-def">
+          Transferência de uma dívida de uma instituição financeira para outra que ofereça condições ou juros mais vantajosos.
+        </div>
+      </div>
+
+      <!-- Termo 3 -->
+      <div class="glossary-card">
+        <div class="glossary-term">Amortização</div>
+        <div class="glossary-def">
+          Redução do valor total de uma dívida por meio de pagamentos antecipados ou liquidação de parcelas.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

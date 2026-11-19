@@ -401,6 +401,15 @@ button{ font: inherit; }
 .block-body{ max-width: var(--col); }
 .block-body p{ margin: 0 0 1.35em; }
 .block-body p:last-child{ margin-bottom: 0; }
+.block-body .nota{
+  font-family: 'Poppins', sans-serif;
+  font-size: .76rem;
+  color: #6f6f6f;
+  letter-spacing: .02em;
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
 .block-body .dropcap .cap{
   font-family: 'Poppins', sans-serif;
   font-weight: 800;

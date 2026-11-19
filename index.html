@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body data-preview="on">
+<body>
 
 <!-- barra de progresso de leitura -->
 <div class="read-progress" aria-hidden="true"><span></span></div>
@@ -81,7 +81,6 @@
   <section class="lede-wrap" id="audio">
     <div class="wrap">
 
-      <!-- PLACEHOLDER: player da versão em áudio -->
       <div class="audio-card" id="audioCard">
         <div class="audio-head">
           <span class="audio-kicker">Versão em áudio</span>
@@ -94,28 +93,31 @@
           <div class="audio-track">
             <div class="audio-meta">
               <strong>Ouça a reportagem</strong>
-              <span>Narração · <span id="audioTime">00:00</span></span>
+              <span>Texto lido · <span id="audioTime">00:00</span></span>
             </div>
             <div class="audio-bar" role="presentation"><span></span></div>
           </div>
         </div>
-        <p class="audio-note">O arquivo de áudio entra aqui assim que a narração estiver finalizada.</p>
+        <p class="audio-note">A versão em áudio é a leitura integral desta reportagem. O arquivo entra aqui assim que a narração estiver finalizada.</p>
       </div>
 
       <div class="lede reveal">
         <p class="eyebrow"><span class="num">00</span> Abertura</p>
         <p class="lede-text">
-          <!-- PLACEHOLDER: substituir pelo texto de abertura do Drive -->
-          O crime que antes dependia de uma esquina, de um olho no bolso e de um braço rápido
-          encontrou um caminho mais barato, mais discreto e sem fronteira. Esta reportagem
-          acompanha esse deslocamento: o que muda quando a abordagem deixa o corpo a corpo
-          e passa a acontecer <span class="hl">dentro de uma tela</span>.
+          Em uma era cada vez mais tecnológica, é preciso adaptar alguns hábitos para o meio digital.
+          Conversas presenciais agora podem ser feitas por ligações, mensagens ou vídeo chamadas.
+          Anotações com papel e caneta vão ficando mais escassas, enquanto agendas e blocos de notas no
+          próprio celular estão enchendo depressa. Livros, jogos e outras formas de entretenimento são
+          achados virtualmente ou, ainda, substituídos pelas redes sociais. Por que com os crimes seria
+          diferente? Se antes estávamos acostumados com assaltos à mão armada, agora os ladrões são muito
+          mais discretos, fazendo uso de dados que <span class="hl">você mesmo deve ter disponibilizado</span>
+          na Internet.
         </p>
       </div>
 
       <figure class="figure figure--wide reveal">
         <img class="figure-img" src="assets/img/materia-01.jpg" width="1600" height="1066" alt="Pessoa de headset diante do monitor aceso, em ambiente escuro iluminado de vermelho.">
-        <figcaption><b>FIG. 01</b> — Foto: arquivo da reportagem.</figcaption>
+        <figcaption><b>FIG. 01</b> — Foto ilustrativa: arquivo da reportagem.</figcaption>
       </figure>
 
     </div>
@@ -129,88 +131,14 @@
       <header class="block-head reveal">
         <p class="eyebrow"><span class="num">01</span> Das ruas às telas</p>
         <h2 class="block-title">Das ruas<br>às telas</h2>
-        <p class="block-lead">
-          <!-- PLACEHOLDER: linha de apoio do bloco -->
-          O mesmo medo, outro endereço. Como o crime de rua se reorganizou quando a vítima
-          passou a estar do outro lado do vidro.
-        </p>
       </header>
 
       <div class="block-body reveal">
         <p class="dropcap">
-          <!-- PLACEHOLDER: parágrafos do bloco 01 -->
-          <span class="cap">P</span>arágrafo de abertura do bloco. Aqui entra o texto do arquivo do Drive, com a
-          cena de entrada, o personagem que conduz a narrativa e a primeira virada da
-          reportagem. O corpo do texto usa Montserrat, entre 18 e 19 pixels, com entrelinha
-          generosa para leitura longa em tela.
-        </p>
-        <p>
-          Segundo parágrafo do bloco. Trechos que precisam de destaque aparecem em
-          <span class="hl">vermelho</span>, sem fundo, para manter a página limpa. Números,
-          datas e nomes de instituições seguem o mesmo tratamento.
-        </p>
-
-        <blockquote class="pull reveal">
-          <p>“Espaço reservado para a citação de abertura do bloco.”</p>
-          <cite>Nome do entrevistado — função</cite>
-        </blockquote>
-
-        <p>
-          Terceiro parágrafo, com o desenvolvimento do bloco e o encaminhamento para o
-          próximo trecho da reportagem.
-        </p>
-      </div>
-
-      <figure class="figure figure--wide reveal">
-        <div class="embed">
-          <div class="embed-head">
-            <span class="embed-kicker">Infográfico interativo</span>
-          </div>
-          <iframe class="embed-frame" style="--h:560px;--h-m:500px" src="assets/infograficos/grafico-migracao.html"
-                  title="Gráfico interativo: evolução comparativa dos crimes virtuais e presenciais no Rio Grande do Sul, de 2018 a 2026"
-                  loading="lazy"></iframe>
-        </div>
-        <figcaption><b>FIG. 02</b> — Evolução comparativa dos crimes virtuais e presenciais no RS (2018–2026). Toque nos pontos para ver os detalhes. Fonte: SSP/RS e FBSP.</figcaption>
-      </figure>
-
-      <figure class="figure reveal">
-        <img class="figure-img" src="assets/img/materia-02.jpg" width="1600" height="1066" alt="Close nas mãos sobre teclado e mouse com iluminação vermelha e roxa.">
-        <figcaption><b>FIG. 03</b> — Foto: arquivo da reportagem.</figcaption>
-      </figure>
-
-      <div class="block-body reveal">
-        <p>
-          Continuação do bloco depois do infográfico. Este espaço está preparado para
-          receber também vídeo, galeria ou gráfico interativo, se for o caso.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="pixels" data-rows="4" aria-hidden="true"></div>
-
-  <!-- ============ BLOCO 02 — GOLPES VIRTUAIS ============ -->
-  <section class="block" id="golpes">
-    <div class="wrap">
-      <header class="block-head reveal">
-        <p class="eyebrow"><span class="num">02</span> Golpes virtuais</p>
-        <h2 class="block-title">Golpes<br>virtuais</h2>
-        <p class="block-lead">
-          <!-- PLACEHOLDER -->
-          A engenharia social como método: o golpe que não precisa de arma, só de
-          confiança e alguns segundos de distração.
-        </p>
-      </header>
-
-      <div class="block-body reveal">
-        <p class="dropcap">
-          <!-- PLACEHOLDER -->
-          <span class="cap">P</span>arágrafo de abertura do bloco de golpes virtuais. Substituir pelo texto do
-          Drive, mantendo a estrutura de parágrafos e os destaques em vermelho.
-        </p>
-        <p>
-          Segundo parágrafo. Dados, valores e percentuais devem vir com a fonte creditada
-          no fim do bloco ou na legenda do gráfico correspondente.
+          <span class="cap">R</span>acismo, assédio sexual, tráfico de drogas, estelionato, crimes de ódio…
+          todos esses podem ser encontrados de forma digital. Além daqueles já considerados exclusivamente
+          cibernéticos, como a invasão de dispositivos informáticos ou a inserção de dados falsos em sistemas
+          de informação.
         </p>
       </div>
 
@@ -223,7 +151,7 @@
                   title="Infográfico interativo com os crimes digitais mais comuns e exemplos reais"
                   loading="lazy"></iframe>
         </div>
-        <figcaption><b>FIG. 04</b> — Toque nos quadros para ver os detalhes e exemplos de cada crime.</figcaption>
+        <figcaption><b>FIG. 02</b> — Toque nos quadros para ver os detalhes e exemplos de cada crime.</figcaption>
       </figure>
 
       <div class="gallery-block reveal">
@@ -240,88 +168,34 @@
           <img src="assets/img/cards/card-06.webp" width="900" height="1125" loading="lazy" alt="Card: crimes sexuais virtuais, divulgação não consentida de imagens íntimas e chantagem.">
           <img src="assets/img/cards/card-07.webp" width="900" height="1125" loading="lazy" alt="Card: cyberbullying, intimidação e perseguição sistemática na internet.">
         </div>
-        <p class="gallery-caption"><b>FIG. 05</b> — Série publicada nas redes do projeto. Arte: arquivo da reportagem.</p>
+        <p class="gallery-caption"><b>FIG. 03</b> — Série publicada nas redes do projeto. Arte: arquivo da reportagem.</p>
       </div>
 
       <div class="block-body reveal">
         <p>
-          Continuação do bloco. O terceiro parágrafo retoma a narrativa depois do
-          infográfico e prepara a passagem para o bloco seguinte.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="pixels" data-rows="4" aria-hidden="true"></div>
-
-  <!-- ============ BLOCO 03 — CYBERBULLYING ============ -->
-  <section class="block" id="cyberbullying">
-    <div class="wrap">
-      <header class="block-head reveal">
-        <p class="eyebrow"><span class="num">03</span> Cyberbullying</p>
-        <h2 class="block-title">Cyber<br>bullying</h2>
-        <p class="block-lead">
-          <!-- PLACEHOLDER -->
-          A violência que não termina quando o sino toca: o que muda quando a humilhação
-          ganha plateia permanente.
-        </p>
-      </header>
-
-      <div class="block-body reveal">
-        <p class="dropcap">
-          <!-- PLACEHOLDER -->
-          <span class="cap">P</span>arágrafo de abertura do bloco de cyberbullying. Substituir pelo texto do Drive.
+          Essa migração do crime presencial para o ambiente virtual não aconteceu do dia para a noite.
+          A história dos delitos virtuais tem início nas décadas de 1960 e 1970, nos Estados Unidos, quando
+          as primeiras práticas se restringiam à sabotagem e à espionagem em grandes computadores centrais
+          (mainframes).
         </p>
         <p>
-          Segundo parágrafo do bloco, com os relatos e o contexto apurado pela reportagem.
-        </p>
-
-        <blockquote class="pull reveal">
-          <p>“Espaço reservado para a citação central deste bloco.”</p>
-          <cite>Nome do entrevistado — função</cite>
-        </blockquote>
-
-        <p>
-          Terceiro parágrafo, fechando o bloco e apontando para o tema da proteção de dados.
-        </p>
-      </div>
-
-      <figure class="figure figure--wide reveal">
-        <div class="video-frame">
-          <video controls playsinline preload="metadata" poster="assets/video/poster-depoimento.jpg">
-            <source src="assets/video/depoimento-bianca.mp4" type="video/mp4">
-            Seu navegador não reproduz este vídeo.
-          </video>
-        </div>
-        <figcaption><b>FIG. 06</b> — Depoimento em vídeo. Crédito e identificação a confirmar.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <div class="pixels" data-rows="4" aria-hidden="true"></div>
-
-  <!-- ============ BLOCO 04 — PROTEÇÃO DE DADOS ============ -->
-  <section class="block" id="dados">
-    <div class="wrap">
-      <header class="block-head reveal">
-        <p class="eyebrow"><span class="num">04</span> Proteção de dados</p>
-        <h2 class="block-title">Proteção<br>de dados</h2>
-        <p class="block-lead">
-          <!-- PLACEHOLDER -->
-          O que a lei alcança, o que fica de fora e o que ainda depende do usuário
-          entender o próprio rastro.
-        </p>
-      </header>
-
-      <div class="block-body reveal">
-        <p class="dropcap">
-          <!-- PLACEHOLDER -->
-          <span class="cap">P</span>arágrafo de abertura do bloco de proteção de dados. Substituir pelo texto do
-          Drive.
+          Com a popularização dos computadores pessoais nos anos 1980 e a chegada da Internet comercial nos
+          anos 1990, essas infrações ganharam uma nova velocidade e escala. No Brasil, esse movimento só
+          ganhou consistência a partir de 1995, ao passo que a rápida migração das operações financeiras para
+          o meio digital atraiu redes criminosas especializadas.
         </p>
         <p>
-          Segundo parágrafo. Aqui podem entrar números da LGPD, pedidos de titulares e
-          dados de incidentes, sempre com fonte.
+          Por muitos anos, o enfrentamento dessas condutas dependeu da aplicação adaptada de tipos penais
+          genéricos previstos no Código Penal de 1940, evidenciando a lacuna entre o avanço tecnológico e a
+          legislação brasileira. Essa necessidade de uma resposta legal impulsionou a criação de marcos
+          específicos no país, como a <span class="hl">Lei Carolina Dieckmann</span> (Lei n° 12.737/2012),
+          o <span class="hl">Marco Civil da Internet</span> (Lei n° 12.965/2014) e a
+          <span class="hl">Convenção de Budapeste</span> (Decreto n° 11.491/2023).
+        </p>
+        <p>
+          Essa evolução histórica ilustra como a transição da criminalidade para o ambiente virtual exige
+          constantes revisões regulatórias, sustentando debates sobre a responsabilidade das plataformas
+          digitais.
         </p>
       </div>
 
@@ -334,8 +208,370 @@
                   title="Linha do tempo interativa da história dos crimes digitais, de 1960 aos dias atuais"
                   loading="lazy"></iframe>
         </div>
-        <figcaption><b>FIG. 07</b> — Toque nos marcos para ver as descrições.</figcaption>
+        <figcaption><b>FIG. 04</b> — Toque nos marcos para ver as descrições.</figcaption>
       </figure>
+
+      <div class="block-body reveal">
+        <p>
+          A dimensão desse problema ganhou destaque no discurso do presidente Luiz Inácio Lula da Silva
+          após sua reeleição, em 25 de outubro de 2026. No conteúdo disponibilizado pela Agência Brasil,
+          ele afirma:
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“Não é possível que a gente não tenha consciência que o crime no mundo digital tem que ser tratado igual crime na vida real”</p>
+          <cite>Luiz Inácio Lula da Silva — presidente da República</cite>
+        </blockquote>
+
+        <p>
+          Essa fala demonstra como a ascensão dos crimes virtuais impacta a vida dos brasileiros e reforça a
+          importância de intervenções que acompanhem a gradual migração da criminalidade para esse meio.
+        </p>
+        <p>
+          Ao defender que os crimes digitais sejam tratados com a mesma seriedade que aqueles cometidos fora
+          da Internet, o presidente também colocou em evidência o debate sobre a responsabilidade das
+          plataformas. No mesmo discurso, Lula afirmou que as empresas de tecnologia precisarão ser
+          reguladas, relacionando a discussão à influência que elas podem exercer sobre a circulação de
+          informações. A fala, contudo, não detalha quais medidas serão adotadas nem estabelece, por si só,
+          mudanças na legislação.
+        </p>
+        <p>
+          Em uma sociedade cada vez mais conectada, proteger os usuários significa também proteger seu
+          patrimônio, sua privacidade, sua integridade e sua liberdade de circular e se comunicar. O
+          reconhecimento de que os crimes cometidos pela Internet produzem consequências reais é um passo
+          importante para que o enfrentamento dessas práticas acompanhe as transformações da sociedade.
+        </p>
+        <p>
+          Por trás das estatísticas, existem histórias reais de vulnerabilidade e impacto. Nesta reportagem,
+          apresentamos as histórias de <span class="hl">Andressa e Gilberto*</span>, um casal de Pelotas que
+          viu o sonho da casa própria virar pesadelo ao cair em um estelionato virtual, de
+          <span class="hl">Bianca*</span>, uma estudante de Frederico Westphalen que enfrentou os traumas do
+          cyberbullying e da difamação, e de <span class="hl">Elis*</span>, uma professora universitária que
+          também se tornou vítima do cyberbullying, mesmo considerada uma figura experiente e de autoridade
+          em sala de aula. Trajetórias completamente distintas, mas que se cruzam em um mesmo ponto: a
+          violência e a insegurança no ambiente digital.
+        </p>
+        <p class="nota">* nomes fictícios para preservar as identidades das vítimas.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="pixels" data-rows="4" aria-hidden="true"></div>
+
+  <!-- ============ BLOCO 02 — GOLPES VIRTUAIS ============ -->
+  <section class="block" id="golpes">
+    <div class="wrap">
+      <header class="block-head reveal">
+        <p class="eyebrow"><span class="num">02</span> Golpes virtuais</p>
+        <h2 class="block-title">Golpes<br>virtuais</h2>
+      </header>
+
+      <div class="block-body reveal">
+        <p class="dropcap">
+          <span class="cap">A</span>tualmente, os golpes virtuais, especialmente os estelionatos, são os
+          crimes cibernéticos mais comuns no estado. O delegado Ercílio Carletti, autoridade da Polícia Civil
+          do Estado do Rio Grande do Sul e titular da Delegacia de Polícia de Pronto Atendimento de Frederico
+          Westphalen, alerta que grande parte desses golpes são realizados pelo WhatsApp e Facebook, redes
+          sociais utilizadas diariamente por grande parte dos usuários. Ele afirma que o número de casos
+          aumentou de forma geométrica desde a pandemia, também enfatizando a redução dos crimes envolvendo
+          violência física ou armas.
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“Frederico esse ano não teve nenhum homicídio. Há meses não tem crime violento. Estelionato, são centenas”</p>
+          <cite>Ercílio Carletti — delegado da DPPA de Frederico Westphalen</cite>
+        </blockquote>
+      </div>
+
+      <figure class="figure figure--wide reveal">
+        <div class="embed">
+          <div class="embed-head">
+            <span class="embed-kicker">Infográfico interativo</span>
+          </div>
+          <iframe class="embed-frame" style="--h:560px;--h-m:500px" src="assets/infograficos/grafico-migracao.html"
+                  title="Gráfico interativo: evolução comparativa dos crimes virtuais e presenciais no Rio Grande do Sul, de 2018 a 2026"
+                  loading="lazy"></iframe>
+        </div>
+        <figcaption><b>FIG. 05</b> — Evolução comparativa dos crimes virtuais e presenciais no RS (2018–2026). Toque nos pontos para ver os detalhes. Fonte: SSP/RS e FBSP.</figcaption>
+      </figure>
+
+      <div class="block-body reveal">
+        <p>
+          Andressa e Gilberto são um exemplo de como esses crimes conseguem se disfarçar em meio ao
+          cotidiano. Em julho de 2021, no auge da pandemia de Covid-19, o casal planejava construir uma casa
+          própria. Para transformar os planos em realidade, era necessário reorganizar as finanças da família
+          e reduzir os juros de empréstimos consignados já existentes, aos quais Gilberto tinha direito por
+          ser servidor público.
+        </p>
+        <p>
+          Tudo começou quando uma oportunidade de aliviar as dívidas surgiu por meio de uma mensagem de
+          WhatsApp. Um suposto representante de uma empresa de consultoria e assessoria financeira entrou em
+          contato com o casal em nome de um grande banco privado nacional. A promessa era de realizar a
+          portabilidade do contrato, transferindo a dívida que o servidor mantinha com um banco público para
+          a nova instituição, que oferecia taxas de juros consideravelmente menores.
+        </p>
+        <p>
+          O fator decisivo para conquistar a confiança do casal foi a precisão das informações dispostas pelo
+          suposto representante. Ele não conhecia apenas o CPF, endereços ou contatos, mas também o valor
+          exato das parcelas restantes, o saldo devedor e a margem consignável disponível no aplicativo
+          oficial do governo federal (SouGov).
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“Há uma convicção tão grande dessas pessoas, um conhecimento tão grande da tua vida, de todos os teus passos… tu acaba sendo envolvido naquilo ali, achando que realmente é verdade”</p>
+          <cite>Andressa — vítima de estelionato virtual</cite>
+        </blockquote>
+
+        <p>
+          Para efetivar a portabilidade, então, o servidor autorizou o acesso às suas informações no portal
+          governamental. A partir dessa validação, um novo contrato de empréstimo consignado no valor de
+          <span class="hl">R$56.000</span> foi emitido junto ao banco privado. A falsa assessoria orientou
+          que, para concluir a liquidação do contrato antigo, eles deveriam transferir o valor recebido
+          integralmente para uma conta indicada como o canal de amortização da consultoria. Acreditando que
+          o procedimento fazia parte do trâmite padrão de quitação entre instituições, o casal realizou a
+          transferência. No dia seguinte, a conta destinatária foi encerrada e o contato com o suposto
+          representante desapareceu completamente.
+        </p>
+        <p>
+          “Depois disso, percebemos que fomos enganados”, relembra Andressa.
+        </p>
+      </div>
+
+      <figure class="figure figure--wide reveal">
+        <div class="embed">
+          <div class="embed-head">
+            <span class="embed-kicker">Glossário</span>
+          </div>
+          <iframe class="embed-frame" style="--h:420px;--h-m:760px" src="assets/infograficos/glossario.html"
+                  title="Glossário dos termos financeiros citados na reportagem: empréstimo consignado, portabilidade de contrato e amortização"
+                  loading="lazy"></iframe>
+        </div>
+        <figcaption><b>FIG. 06</b> — Os termos financeiros usados no golpe, explicados.</figcaption>
+      </figure>
+
+      <div class="block-body reveal">
+        <p>
+          Com a fraude já consumada, Andressa e Gilberto se depararam com um pesadelo duplo: além de manter
+          a dívida consignada original, passaram a responder por um novo contrato de R$56.000.
+        </p>
+        <p>
+          O casal registrou ocorrência policial e acionou a Justiça, reunindo um acervo de provas, mas a ação
+          foi indeferida. O argumento final foi de que, como o banco privado efetivamente disponibilizou o
+          crédito na conta da vítima, o repasse posterior para terceiros teria sido uma decisão voluntária do
+          cliente.
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“O advogado do bairro, por mais honesto que seja, não tem como enfrentar a banca de advogados que essas corporações contratam. É uma guerra de gigantes contra anões”</p>
+          <cite>Gilberto — vítima de estelionato virtual</cite>
+        </blockquote>
+
+        <p>
+          Apesar dos resultados jurídicos, um fato atípico marcou o desfecho do caso: após eles pagarem cerca
+          de seis parcelas mensais de R$1.200 do novo empréstimo, o banco privado interrompeu espontaneamente
+          as cobranças sem emitir explicação oficial. Para o casal, essa decisão representou um reconhecimento
+          da instituição de que a operação envolveu falhas de segurança internas ou acesso indevido por
+          terceiros ao sistema bancário, apesar de não haver qualquer comprovação.
+        </p>
+        <p>
+          Para além dos prejuízos financeiros, o caso expõe as marcas psicológicas deixadas pelos crimes
+          cibernéticos. O processo de entrar em contato com o golpista, movimentar o dinheiro entre as contas,
+          entrar na Justiça e ter o incidente como encerrado durou 2 anos e 3 meses, envolveu quatro bancos
+          diferentes e exigiu muita força emocional.
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“Primeiro vem a sensação de burrice, e a raiva de ter aceitado aquilo para tentar reduzir custos. Depois, a indignação ao ver que a Justiça não protege a vítima. A gente se sente sem pai nem mãe, totalmente desprotegidos”</p>
+          <cite>Andressa — vítima de estelionato virtual</cite>
+        </blockquote>
+      </div>
+
+      <figure class="figure reveal">
+        <img class="figure-img" src="assets/img/materia-02.jpg" width="1600" height="1066" alt="Close nas mãos sobre teclado e mouse com iluminação vermelha e roxa.">
+        <figcaption><b>FIG. 07</b> — Foto ilustrativa: arquivo da reportagem.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="pixels" data-rows="4" aria-hidden="true"></div>
+
+  <!-- ============ BLOCO 03 — CYBERBULLYING ============ -->
+  <section class="block" id="cyberbullying">
+    <div class="wrap">
+      <header class="block-head reveal">
+        <p class="eyebrow"><span class="num">03</span> Cyberbullying</p>
+        <h2 class="block-title">Cyber<br>bullying</h2>
+      </header>
+
+      <div class="block-body reveal">
+        <p class="dropcap">
+          <span class="cap">I</span>ntimidação, humilhação, perseguição ou violência psicológica no ambiente
+          virtual configuram o cyberbullying, uma das infrações digitais mais recorrentes e silenciosas da
+          atualidade.
+        </p>
+        <p>
+          Bianca, estudante universitária de 19 anos, teve sua integridade abalada após um vídeo de um carro
+          estacionado, supostamente com pessoas em atos íntimos, passar a circular repetidamente em grupos de
+          WhatsApp. A gravação era acompanhada por boatos falsos, que a apontavam como uma das ocupantes do
+          veículo, alegação que ela negou veementemente e que, hoje, já foi desmentida.
+        </p>
+        <p>
+          A rápida disseminação de conteúdos em aplicativos de mensagem aumenta a vulnerabilidade a que
+          estudantes estão sujeitos no ambiente acadêmico. Sem qualquer checagem de veracidade, o
+          compartilhamento em cadeia transformou o boato em um julgamento público virtual, evidenciando como a
+          propagação de difamação nas redes digitais pode comprometer a rotina e o bem-estar de jovens que
+          ainda estão transicionando para a vida adulta.
+        </p>
+      </div>
+
+      <figure class="figure figure--wide reveal">
+        <div class="video-frame">
+          <video controls playsinline preload="metadata" poster="assets/video/poster-depoimento.jpg">
+            <source src="assets/video/depoimento-bianca.mp4" type="video/mp4">
+            Seu navegador não reproduz este vídeo.
+          </video>
+        </div>
+        <figcaption><b>FIG. 08</b> — Depoimento: em entrevista, Bianca relata a experiência de ter seu nome associado a boatos virtuais e como enfrentou a situação.</figcaption>
+      </figure>
+
+      <div class="block-body reveal">
+        <p>
+          Embora a percepção pública frequentemente associe essa conduta aos jovens, a legislação brasileira
+          avançou para punir a prática em todas as suas formas. Em janeiro de 2024, a
+          <span class="hl">Lei n° 14.811/2024</span> incluiu o bullying e o cyberbullying no Código Penal,
+          estabelecendo punições não somente para quem comete esse crime de forma presencial, mas também para
+          quaisquer pessoas, independentemente da idade, que utilizarem as redes sociais, computadores ou
+          aplicativos virtuais para tais comportamentos.
+        </p>
+        <p>
+          A professora e ex-coordenadora de curso universitário Elis exemplifica como a violência não tem
+          relação direta com a idade ou a maturidade profissional de alguém.
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“Eu acho que não tem perfil etário… qualquer pessoa pode ser vítima de bullying”</p>
+          <cite>Elis — professora e ex-coordenadora de curso</cite>
+        </blockquote>
+
+        <p>
+          A ideia de que adultos e figuras de autoridade estão imunes a agressões é contraditória diante do
+          cenário apresentado por ela.
+        </p>
+        <p>
+          Durante uma aula expositiva, Elis cometeu um equívoco ao trocar acidentalmente o nome de uma autora.
+          Um estudante presente na sala publicou o fato no Twitter (X) sem qualquer contexto da aula,
+          insinuando que a docente não estaria bem mentalmente e desencadeando uma série de outros comentários
+          e julgamentos, muitas vezes de usuários que ela sequer reconhecia.
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“Aquilo me magoou muito, eu chorei bastante, tá? Que direito tem alguém de pegar uma frase desencontrada tua e colocar juízos de valor a teu respeito em rede?”</p>
+          <cite>Elis — professora e ex-coordenadora de curso</cite>
+        </blockquote>
+
+        <p>
+          A dor emocional causada pelos insultos a fez se desvincular da mencionada plataforma digital e até
+          considerar se afastar da turma. Contudo, a professora alega ter compreendido a imaturidade e a
+          necessidade que as pessoas têm de diminuir as outras ou mesmo rotulá-las para que o público as dê
+          atenção, optando, portanto, por manter uma conduta profissional.
+        </p>
+        <p>
+          Para tratar do incidente sem transformar o episódio em algo pessoal, a então coordenadora acionou o
+          Núcleo de Apoio Estudantil (NAE) e o vice-coordenador do curso para conduzir um encontro com a
+          turma, visando debater a responsabilidade e a ética nas redes digitais. Durante a conversa, a
+          identidade do autor da postagem não foi revelada ou exposta aos colegas, e a docente justifica sua
+          postura:
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“Ele fez isso comigo, mas eu não fiz. Eu não poderia me colocar no mesmo lugar dessa pessoa. Como educadora, não posso fazer isso”</p>
+          <cite>Elis — professora e ex-coordenadora de curso</cite>
+        </blockquote>
+
+        <p>
+          A psicóloga do NAE, Laís, ajuda a compreender os fatores emocionais por trás das agressões sofridas
+          tanto por Bianca quanto pela professora Elis. Segundo a profissional, o ambiente virtual permite um
+          distanciamento emocional capaz de alterar a percepção da violência, pois quem ataca não presencia o
+          sofrimento da vítima.
+        </p>
+
+        <blockquote class="pull reveal">
+          <p>“Na Internet é muito mais difícil você enxergar aquela pessoa como um outro ser humano, porque esse distanciamento altera um pouco essa percepção”</p>
+          <cite>Laís — psicóloga do Núcleo de Apoio Estudantil (NAE)</cite>
+        </blockquote>
+
+        <p>
+          Laís também aponta como a superação do cyberbullying exige a consolidação de uma rede de apoio
+          sólida, capaz de acolher a vítima, respeitar suas escolhas e auxiliar na reconstrução de seus
+          vínculos sociais e afetivos. Seja para buscar o fortalecimento pessoal junto à família e aos amigos,
+          ou para formalizar uma denúncia perante as ouvidorias institucionais ou autoridades policiais, o
+          combate a essas infrações depende da empatia, responsabilidade ética e do respeito mútuo nas
+          interações digitais.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="pixels" data-rows="4" aria-hidden="true"></div>
+
+  <!-- ============ BLOCO 04 — PROTEÇÃO DE DADOS ============ -->
+  <section class="block" id="dados">
+    <div class="wrap">
+      <header class="block-head reveal">
+        <p class="eyebrow"><span class="num">04</span> Proteção de dados</p>
+        <h2 class="block-title">Proteção<br>de dados</h2>
+      </header>
+
+      <div class="block-body reveal">
+        <p class="dropcap">
+          <span class="cap">A</span> precisão com que criminosos obtêm e articulam dados pessoais transformou a
+          privacidade em uma questão central de segurança. Informações cadastrais, números de documentos,
+          contatos e registros financeiros circulam com facilidade e servem de insumo para fraudes cada vez
+          mais convincentes e direcionadas.
+        </p>
+        <p>
+          Para estabelecer limites a esse cenário, o país instituiu a
+          <span class="hl">Lei Geral de Proteção de Dados Pessoais (LGPD)</span>, posteriormente consolidada
+          pela inclusão da proteção de dados pessoais como direito fundamental na Constituição Federal
+          (Emenda Constitucional nº 115/2022).
+        </p>
+        <p>
+          Sob a fiscalização da Autoridade Nacional de Proteção de Dados (ANPD), a legislação impõe regras
+          rigorosas para o tratamento e a guarda dessas informações por empresas e órgãos públicos, além de
+          assegurar ao cidadão o controle sobre o uso de seus próprios registros.
+        </p>
+        <p>
+          Contudo, os limites legais e regulatórios não operam sozinhos diante da ação cotidiana de
+          criminosos. Conforme adverte o delegado Ercílio Carletti, a regra elementar para proteção consiste
+          em <span class="hl">desconfiar sempre</span>. A cautela constante com a exposição de informações
+          pessoais é indispensável, sobretudo ao orientar grupos com maior vulnerabilidade à manipulação, como
+          os idosos, e ao identificar abordagens fraudulentas frequentes, a exemplo do golpe do "falso
+          advogado”.
+        </p>
+        <p>
+          Caso ocorra o comprometimento de dados ou prejuízo financeiro, a recomendação das autoridades é
+          registrar a ocorrência com agilidade presencialmente em uma delegacia, ou utilizar o canal da
+          Delegacia Online do Rio Grande do Sul.
+        </p>
+        <p>
+          Antecipar-se aos riscos e assumir o controle sobre a própria pegada digital, no entanto, exige
+          medidas técnicas acessíveis no uso diário de aplicativos, senhas e redes sociais.
+        </p>
+      </div>
+
+      <!-- podcast sobre proteção de dados -->
+      <aside class="podcast-inline reveal" id="podcast" aria-labelledby="podcastTitle">
+        <p class="eyebrow eyebrow--light"><span class="num">05</span> No fim da linha</p>
+        <h3 class="podcast-inline-title" id="podcastTitle">Podcast</h3>
+        <p class="podcast-inline-text">
+          O episódio que fecha a reportagem é sobre proteção de dados: as orientações das autoridades
+          reunidas em conversa, do golpe do falso advogado ao que fazer depois de um prejuízo.
+        </p>
+        <div class="podcast-slot">
+          <span class="podcast-slot-label">Episódio em produção</span>
+          <span class="podcast-slot-hint">Espaço reservado para o player</span>
+        </div>
+      </aside>
 
       <figure class="figure figure--wide reveal">
         <div class="embed">
@@ -346,29 +582,8 @@
                   title="Guia de orientação à vítima de crime digital no Rio Grande do Sul"
                   loading="lazy"></iframe>
         </div>
-        <figcaption><b>FIG. 08</b> — Passo a passo e canais oficiais para registrar ocorrências digitais no RS.</figcaption>
+        <figcaption><b>FIG. 09</b> — Passo a passo e canais oficiais para registrar ocorrências digitais no RS.</figcaption>
       </figure>
-
-      <div class="block-body reveal">
-        <p>
-          Parágrafo de encerramento da reportagem, antes do podcast.
-        </p>
-      </div>
-
-      <!-- podcast: fecha o bloco de proteção de dados, dentro do corpo do texto -->
-      <aside class="podcast-inline reveal" id="podcast" aria-labelledby="podcastTitle">
-        <p class="eyebrow eyebrow--light"><span class="num">05</span> No fim da linha</p>
-        <h3 class="podcast-inline-title" id="podcastTitle">Podcast</h3>
-        <p class="podcast-inline-text">
-          <!-- PLACEHOLDER -->
-          O episódio que encerra a reportagem entra aqui: conversa com os personagens,
-          bastidores da apuração e o que ficou fora do texto.
-        </p>
-        <div class="podcast-slot">
-          <span class="podcast-slot-label">Episódio em produção</span>
-          <span class="podcast-slot-hint">Espaço reservado para o player</span>
-        </div>
-      </aside>
     </div>
   </section>
 
@@ -471,12 +686,6 @@
 <script>
   new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
-
-<div class="preview-chip" id="previewChip">
-  <span class="chip-full">Prévia de layout · textos de exemplo</span>
-  <span class="chip-short">Prévia</span>
-  <button type="button" id="previewClose" aria-label="Ocultar aviso">×</button>
-</div>
 
 <script src="assets/js/main.js"></script>
 </body>
