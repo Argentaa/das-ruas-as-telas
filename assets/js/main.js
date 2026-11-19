@@ -158,10 +158,46 @@
   }
 
   const audioBtn = document.getElementById('audioPlay');
-  if (audioBtn) {
+  const audioEl = document.getElementById('audioFile');
+  const audioStatusEl = document.getElementById('audioStatus');
+  const audioTimeEl = document.getElementById('audioTime');
+  const audioBarEl = document.querySelector('.audio-bar span');
+  const AUDIO_PLAY_D = 'M8 5.5v13l10-6.5z';
+  const AUDIO_PAUSE_D = 'M7.5 5.5h3.4v13H7.5zM13.1 5.5h3.4v13h-3.4z';
+  const fmtTime = (s) => {
+    if (!isFinite(s)) s = 0;
+    const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+    return String(m).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
+  };
+  const setPlaying = (playing) => {
+    if (audioBtn) {
+      audioBtn.setAttribute('aria-label', playing ? 'Pausar a versão em áudio da reportagem' : 'Reproduzir a versão em áudio da reportagem');
+      const p = audioBtn.querySelector('path');
+      if (p) p.setAttribute('d', playing ? AUDIO_PAUSE_D : AUDIO_PLAY_D);
+    }
+    if (audioStatusEl) audioStatusEl.textContent = playing ? 'Tocando' : 'Disponível';
+  };
+  if (audioBtn && audioEl) {
     audioBtn.addEventListener('click', () => {
-      toast('A versão em áudio ainda está em produção.');
+      if (audioEl.paused) {
+        audioEl.play().catch(() => toast('Não foi possível iniciar o áudio. Abra o arquivo no Google Drive.'));
+      } else {
+        audioEl.pause();
+      }
     });
+    audioEl.addEventListener('play', () => setPlaying(true));
+    audioEl.addEventListener('pause', () => setPlaying(false));
+    audioEl.addEventListener('timeupdate', () => {
+      if (audioTimeEl) audioTimeEl.textContent = fmtTime(audioEl.currentTime);
+      if (audioBarEl) audioBarEl.style.width =
+        (audioEl.duration ? (audioEl.currentTime / audioEl.duration) * 100 : 0).toFixed(2) + '%';
+    });
+    audioEl.addEventListener('ended', () => {
+      if (audioTimeEl) audioTimeEl.textContent = '00:00';
+      if (audioBarEl) audioBarEl.style.width = '0%';
+      setPlaying(false);
+    });
+    audioEl.addEventListener('error', () => toast('Não foi possível carregar o áudio. Tente abrir o arquivo no Google Drive.'));
   }
 
   const previewClose = document.getElementById('previewClose');

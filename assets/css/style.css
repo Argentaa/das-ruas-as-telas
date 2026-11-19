@@ -855,13 +855,13 @@ a.hl{
 }
 a.hl:hover{ text-decoration-style: solid; }
 
-.block-body a.lnk{
+.block-body a.lnk, .audio-note a.lnk{
   color: inherit;
   text-decoration: underline dotted 1.5px;
   text-underline-offset: 3px;
   transition: color .2s var(--ease);
 }
-.block-body a.lnk:hover{ color: var(--vermelho); }
+.block-body a.lnk:hover, .audio-note a.lnk:hover{ color: var(--vermelho); }
 
 /* série em cards dentro da faixa escura do Instagram */
 .instagram .gallery-block{ margin-top: clamp(44px, 6vw, 76px); }
