@@ -446,7 +446,7 @@ button{ font: inherit; }
 
 /* ---------- figuras e espaços de mídia ---------- */
 .figure{ margin: 0; max-width: 860px; }
-.figure--wide{ max-width: 1000px; }
+.figure--wide{ max-width: 100%; }
 .media-slot{
   position: relative;
   aspect-ratio: var(--ar, 16 / 9);
