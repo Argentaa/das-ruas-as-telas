@@ -139,7 +139,12 @@
   ];
 
   // eixo X em duas linhas: ano em cima (maior) e descrição embaixo (menor), centralizados
-  const descricoesEixo = ['pré-pandemia', 'auge da pandemia', 'pós-pandemia', 'dias atuais'];
+  const descricoesEixo = [
+    { longo: 'pré-pandemia', curto: 'pré' },
+    { longo: 'auge da pandemia', curto: 'auge' },
+    { longo: 'pós-pandemia', curto: 'pós' },
+    { longo: 'dias atuais', curto: 'atual' },
+  ];
   const eixoXDuplo = {
     id: 'eixoXDuplo',
     afterDraw(cfg) {
@@ -147,33 +152,62 @@
       const eixoX = scales.x;
       if (!eixoX) return;
       const passo = (chartArea.right - chartArea.left) / eixoX.ticks.length;
-      const limite = Math.max(46, passo - 6);
+      const limite = Math.max(24, passo - 8);
+      const estreito = passo < 56;                       // não cabe nem "pandemia"
+      const fonteAno = passo < 62 ? 11 : 12;
+      const fonteDesc = passo < 62 ? 8 : 8.5;
+      const alturaLinha = fonteDesc + 2.5;
+      cfg.$caixas = [];
       ctx.save();
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      const central = (texto, cx) => {
-        const metade = ctx.measureText(texto).width / 2;
-        return Math.min(Math.max(cx, chartArea.left + metade), chartArea.right - metade);
-      };
-      eixoX.ticks.forEach((tick, i) => {
-        const cx = eixoX.getPixelForTick(i);
-        ctx.font = '600 12px Montserrat, Poppins, sans-serif';
-        ctx.fillStyle = '#9A0D1C';
-        ctx.fillText(String(tick.label), central(String(tick.label), cx), chartArea.bottom + 8);
 
-        ctx.font = '400 9px Poppins, sans-serif';
-        ctx.fillStyle = '#666666';
-        const palavras = (descricoesEixo[i] || '').split(' ');
+      const desenhar = (texto, cx, y, ehAno, altura) => {
+        const metade = ctx.measureText(texto).width / 2;
+        const x = Math.min(Math.max(cx, chartArea.left + metade), chartArea.right - metade);
+        ctx.fillText(texto, x, y);
+        cfg.$caixas.push({ texto, ehAno, x0: x - metade, x1: x + metade, y, altura });
+      };
+
+      // quebra por espaço e por hífen/travessão, sem colar palavras
+      const quebrar = (texto) => {
+        const tokens = [];
+        texto.split(' ').forEach((palavra) => {
+          if (ctx.measureText(palavra).width > limite && /[-–]/.test(palavra)) {
+            palavra.split(/(?<=[-–])/).forEach((p) => { if (p) tokens.push(p); });
+          } else {
+            tokens.push(palavra);
+          }
+        });
         const linhas = [];
         let atual = '';
-        palavras.forEach((p) => {
-          const teste = atual ? atual + ' ' + p : p;
-          if (ctx.measureText(teste).width > limite && atual) { linhas.push(atual); atual = p; }
-          else { atual = teste; }
+        tokens.forEach((t) => {
+          const colado = !atual ? t : (/[-–]$/.test(atual) ? atual + t : atual + ' ' + t);
+          if (!atual || ctx.measureText(colado).width <= limite) { atual = colado; }
+          else { linhas.push(atual); atual = t; }
         });
         if (atual) linhas.push(atual);
-        linhas.forEach((l, j) => {
-          ctx.fillText(l, central(l, cx), chartArea.bottom + 26 + j * 10.5);
+        return linhas;
+      };
+
+      eixoX.ticks.forEach((tick, i) => {
+        const cx = eixoX.getPixelForTick(i);
+
+        ctx.font = `600 ${fonteAno}px Montserrat, Poppins, sans-serif`;
+        ctx.fillStyle = '#9A0D1C';
+        const anoLinhas = quebrar(String(tick.label));
+        const alturaAno = fonteAno + 2;
+        anoLinhas.forEach((linha, j) => {
+          desenhar(linha, cx, chartArea.bottom + 8 + j * alturaAno, true, alturaAno);
+        });
+
+        ctx.font = `400 ${fonteDesc}px Poppins, sans-serif`;
+        ctx.fillStyle = '#666666';
+        const d = descricoesEixo[i] || { longo: '', curto: '' };
+        const linhas = estreito ? [d.curto] : quebrar(d.longo);
+        const base = chartArea.bottom + 8 + anoLinhas.length * alturaAno + 3;
+        linhas.forEach((linha, j) => {
+          desenhar(linha, cx, base + j * alturaLinha, false, fonteDesc);
         });
       });
       ctx.restore();
@@ -213,7 +247,7 @@
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      layout: { padding: { bottom: 56 } },
+      layout: { padding: { bottom: 64 } },
       interaction: { mode: 'nearest', intersect: false },
       plugins: {
         legend: {
