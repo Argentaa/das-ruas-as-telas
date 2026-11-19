@@ -845,3 +845,29 @@ section, .hero, #audio{ scroll-margin-top: calc(var(--nav-h) + 10px); }
   .pixel{ transform: scale(.86); opacity: 1; }
   .reveal{ opacity: 1; transform: none; }
 }
+
+/* ==========================================================================
+   AJUSTES 11/2026 — links das fontes, série no Instagram e depoimento
+   ========================================================================== */
+a.hl{
+  text-decoration: underline dotted 1.5px;
+  text-underline-offset: 3px;
+}
+a.hl:hover{ text-decoration-style: solid; }
+
+.block-body a.lnk{
+  color: inherit;
+  text-decoration: underline dotted 1.5px;
+  text-underline-offset: 3px;
+  transition: color .2s var(--ease);
+}
+.block-body a.lnk:hover{ color: var(--vermelho); }
+
+/* série em cards dentro da faixa escura do Instagram */
+.instagram .gallery-block{ margin-top: clamp(44px, 6vw, 76px); }
+.instagram .embed-kicker{ color: #ff5a6a; }
+.instagram .gallery-caption{ color: #a3a3a3; }
+.instagram .gallery-caption b{ color: #ff5a6a; }
+
+/* botão do depoimento (reaproveita o estilo pill do .insta-cta) */
+.podcast-inline .insta-cta{ margin-top: clamp(24px, 3.4vw, 36px); }
