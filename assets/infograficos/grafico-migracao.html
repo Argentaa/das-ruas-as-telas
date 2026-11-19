@@ -88,9 +88,10 @@
     /* telas estreitas: tipografia menor e legenda curta */
     @media (max-width: 560px) {
       html, body { padding: 8px; }
-      .infographic-card { padding: 14px 12px; border-radius: 10px; max-height: none; }
+      .infographic-card { padding: 14px 12px; border-radius: 10px; max-height: none; height: auto; }
       .title-main { font-size: 1rem; line-height: 1.15; }
       .subtitle { font-size: 0.72rem; margin-bottom: 6px; }
+      .chart-container { flex: 0 0 290px; height: 290px; min-height: 0; max-height: none; }
       footer { font-size: 0.62rem; margin-top: 8px; padding-top: 6px; }
     }
   </style>
@@ -137,10 +138,53 @@
     "2025-2026 (Atual): 42,0 mil casos. Destaque 2026: 0 homicídios em Frederico Westphalen (FW) este ano."
   ];
 
+  // eixo X em duas linhas: ano em cima (maior) e descrição embaixo (menor), centralizados
+  const descricoesEixo = ['pré-pandemia', 'auge da pandemia', 'pós-pandemia', 'dias atuais'];
+  const eixoXDuplo = {
+    id: 'eixoXDuplo',
+    afterDraw(cfg) {
+      const { ctx, chartArea, scales } = cfg;
+      const eixoX = scales.x;
+      if (!eixoX) return;
+      const passo = (chartArea.right - chartArea.left) / eixoX.ticks.length;
+      const limite = Math.max(46, passo - 6);
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      const central = (texto, cx) => {
+        const metade = ctx.measureText(texto).width / 2;
+        return Math.min(Math.max(cx, chartArea.left + metade), chartArea.right - metade);
+      };
+      eixoX.ticks.forEach((tick, i) => {
+        const cx = eixoX.getPixelForTick(i);
+        ctx.font = '600 12px Montserrat, Poppins, sans-serif';
+        ctx.fillStyle = '#9A0D1C';
+        ctx.fillText(String(tick.label), central(String(tick.label), cx), chartArea.bottom + 8);
+
+        ctx.font = '400 9px Poppins, sans-serif';
+        ctx.fillStyle = '#666666';
+        const palavras = (descricoesEixo[i] || '').split(' ');
+        const linhas = [];
+        let atual = '';
+        palavras.forEach((p) => {
+          const teste = atual ? atual + ' ' + p : p;
+          if (ctx.measureText(teste).width > limite && atual) { linhas.push(atual); atual = p; }
+          else { atual = teste; }
+        });
+        if (atual) linhas.push(atual);
+        linhas.forEach((l, j) => {
+          ctx.fillText(l, central(l, cx), chartArea.bottom + 26 + j * 10.5);
+        });
+      });
+      ctx.restore();
+    }
+  };
+
   const chart = new Chart(ctx, {
     type: 'line',
+    plugins: [eixoXDuplo],
     data: {
-      labels: ['2018\n(Pré-pandemia)', '2021\n(Auge Pandemia)', '2023\n(Pós-pandemia)', '2025-2026\n(Dias Atuais)'],
+      labels: ['2018', '2021', '2023', '2025–2026'],
       datasets: [
         {
           label: rotulosLegenda()[0],
@@ -169,6 +213,8 @@
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      layout: { padding: { bottom: 56 } },
+      interaction: { mode: 'nearest', intersect: false },
       plugins: {
         legend: {
           position: 'top',
@@ -202,10 +248,7 @@
       scales: {
         x: {
           grid: { display: false },
-          ticks: {
-            font: { family: 'Poppins', size: 10, weight: '500' },
-            color: '#333333'
-          }
+          ticks: { display: false }
         },
         y: {
           beginAtZero: true,

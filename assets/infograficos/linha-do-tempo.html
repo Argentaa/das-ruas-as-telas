@@ -182,11 +182,34 @@
       text-align: center;
     }
 
-    .timeline-card:hover .timeline-desc {
+    .timeline-card:hover .timeline-desc,
+    .timeline-card.is-open .timeline-desc,
+    .timeline-card:focus-visible .timeline-desc {
       max-height: 220px;
       opacity: 1;
       margin-top: 6px;
     }
+
+    /* toque / teclado: mesmo comportamento do hover */
+    .timeline-card.is-open,
+    .timeline-card:focus-visible {
+      border-color: #9A0D1C;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(154, 13, 28, 0.15);
+    }
+    .timeline-node.is-open .timeline-dot,
+    .timeline-node:focus-within .timeline-dot {
+      transform: scale(1.3);
+      background-color: #ffffff;
+    }
+    .timeline-card.is-open .hover-hint,
+    .timeline-card:focus-visible .hover-hint {
+      opacity: 0;
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    .timeline-card.is-open .timeline-desc { max-height: 600px; }
 
     /* Rodapé de Autoria */
     .timeline-footer {
@@ -213,7 +236,7 @@
 
   <div class="timeline-wrapper">
     <h1 class="timeline-header">Linha do Tempo</h1>
-    <p class="timeline-subtitle">Passe o mouse (ou toque) sobre os quadros para ver as descrições</p>
+    <p class="timeline-subtitle">Toque nos marcos para ver as descrições</p>
 
     <div class="timeline-container">
       <div class="timeline-grid">
@@ -224,7 +247,7 @@
           <div class="timeline-card">
             <div class="timeline-year">1960–1970</div>
             <div class="timeline-title">A Origem nos EUA</div>
-            <span class="hover-hint">(Passe o mouse)</span>
+            <span class="hover-hint">(Toque para ver)</span>
             <div class="timeline-desc">
               Primeiros registros em mainframes, focados em sabotagem e espionagem corporativa.
             </div>
@@ -237,7 +260,7 @@
           <div class="timeline-card">
             <div class="timeline-year">1995</div>
             <div class="timeline-title">Quando Chegou no Brasil</div>
-            <span class="hover-hint">(Passe o mouse)</span>
+            <span class="hover-hint">(Toque para ver)</span>
             <div class="timeline-desc">
               Com a expansão da internet comercial e do banking no país, surgem golpes de phishing, trojans e roubo de dados.
             </div>
@@ -250,7 +273,7 @@
           <div class="timeline-card">
             <div class="timeline-year">2012</div>
             <div class="timeline-title">Lei Carolina Dieckmann</div>
-            <span class="hover-hint">(Passe o mouse)</span>
+            <span class="hover-hint">(Toque para ver)</span>
             <div class="timeline-desc">
               Primeiro marco legal a tipificar a invasão de dispositivos informáticos no Código Penal brasileiro.
             </div>
@@ -263,7 +286,7 @@
           <div class="timeline-card">
             <div class="timeline-year">2014</div>
             <div class="timeline-title">Marco Civil da Internet</div>
-            <span class="hover-hint">(Passe o mouse)</span>
+            <span class="hover-hint">(Toque para ver)</span>
             <div class="timeline-desc">
               Estabelece princípios, garantias, direitos, deveres e diretrizes de privacidade para o uso da rede no Brasil.
             </div>
@@ -276,7 +299,7 @@
           <div class="timeline-card">
             <div class="timeline-year">2023</div>
             <div class="timeline-title">Convenção de Budapeste</div>
-            <span class="hover-hint">(Passe o mouse)</span>
+            <span class="hover-hint">(Toque para ver)</span>
             <div class="timeline-desc">
               Adesão ao tratado internacional para cooperação jurídica e combate aos cibercrimes.
             </div>
@@ -289,7 +312,7 @@
           <div class="timeline-card">
             <div class="timeline-year">Atualidade</div>
             <div class="timeline-title">Dias Atuais</div>
-            <span class="hover-hint">(Passe o mouse)</span>
+            <span class="hover-hint">(Toque para ver)</span>
             <div class="timeline-desc">
               Escala massiva de fraudes virtuais e intensificação do debate sobre a regulação e responsabilidade das Big Techs.
             </div>
@@ -305,5 +328,30 @@
     </div>
   </div>
 
+<script>
+  // toque e teclado: abre/fecha os quadros (no desktop o hover continua igual)
+  document.querySelectorAll('.timeline-card').forEach((card) => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-expanded', 'false');
+    const alternar = () => {
+      const aberto = card.classList.contains('is-open');
+      document.querySelectorAll('.timeline-card.is-open').forEach((c) => {
+        c.classList.remove('is-open');
+        c.setAttribute('aria-expanded', 'false');
+        if (c.parentElement) c.parentElement.classList.remove('is-open');
+      });
+      if (!aberto) {
+        card.classList.add('is-open');
+        card.setAttribute('aria-expanded', 'true');
+        if (card.parentElement) card.parentElement.classList.add('is-open');
+      }
+    };
+    card.addEventListener('click', alternar);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); }
+    });
+  });
+</script>
 </body>
 </html>

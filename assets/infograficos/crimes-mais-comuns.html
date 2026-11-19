@@ -209,11 +209,39 @@
       text-align: center;
     }
 
-    .crime-card:hover .crime-desc {
+    .crime-card:hover .crime-desc,
+    .crime-card.is-open .crime-desc,
+    .crime-card:focus-visible .crime-desc {
       max-height: 250px;
       opacity: 1;
       margin-top: 8px;
     }
+
+    /* toque / teclado: mesmo comportamento do hover */
+    .crime-card { cursor: pointer; }
+    .crime-card.is-open,
+    .crime-card:focus-visible {
+      opacity: 1;
+      filter: grayscale(0%);
+      border-color: #9A0D1C;
+      background: #ffffff;
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(154, 13, 28, 0.2);
+    }
+    .crime-card.is-open .node-dot,
+    .crime-card:focus-visible .node-dot {
+      transform: scale(1.4);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 2px #9A0D1C, 0 0 0 5px #9A0D1C;
+    }
+    .crime-card.is-open .hover-hint,
+    .crime-card:focus-visible .hover-hint {
+      opacity: 0;
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    .crime-card.is-open .crime-desc { max-height: 600px; }
 
     .example-box {
       background-color: #fdf2f3;
@@ -252,7 +280,7 @@
 
   <div class="infographic-wrapper">
     <h1 class="infographic-header">Crimes Digitais Mais Comuns</h1>
-    <p class="infographic-subtitle">Passe o mouse (ou toque) sobre os quadros para expandir os detalhes e exemplos</p>
+    <p class="infographic-subtitle">Toque nos quadros para ver os detalhes e exemplos de cada crime</p>
 
     <div class="net-container">
       
@@ -281,7 +309,7 @@
         <div class="crime-card top-left-node">
           <div class="node-dot"></div>
           <div class="crime-title">Extorsão Virtual</div>
-          <span class="hover-hint">(Passe o mouse)</span>
+          <span class="hover-hint">(Toque para ver)</span>
           <div class="crime-desc">
             Ameaça ou constrangimento no meio digital para forçar a vítima a realizar transferências financeiras.
             <div class="example-box">
@@ -293,7 +321,7 @@
         <div class="crime-card top-right-node">
           <div class="node-dot"></div>
           <div class="crime-title">Invasão de Dados</div>
-          <span class="hover-hint">(Passe o mouse)</span>
+          <span class="hover-hint">(Toque para ver)</span>
           <div class="crime-desc">
             Acesso não autorizado a sistemas e dispositivos para sequestro, roubo ou vazamento de informações.
             <div class="example-box">
@@ -306,7 +334,7 @@
         <div class="crime-card mid-left-node">
           <div class="node-dot"></div>
           <div class="crime-title">Desvio de Dinheiro</div>
-          <span class="hover-hint">(Passe o mouse)</span>
+          <span class="hover-hint">(Toque para ver)</span>
           <div class="crime-desc">
             Transferências financeiras não autorizadas efetuadas após captura ilícita de credenciais bancárias.
             <div class="example-box">
@@ -319,7 +347,7 @@
         <div class="crime-card mid-center-node center-node">
           <div class="node-dot"></div>
           <div class="crime-title">Estelionato Digital</div>
-          <span class="hover-hint">(Passe o mouse)</span>
+          <span class="hover-hint">(Toque para ver)</span>
           <div class="crime-desc">
             Uso de engenharia social e fraudes online para enganar a vítima e obter vantagens financeiras ilícitas.
             <div class="example-box">
@@ -331,7 +359,7 @@
         <div class="crime-card mid-right-node">
           <div class="node-dot"></div>
           <div class="crime-title">Crimes Sexuais Virtuais</div>
-          <span class="hover-hint">(Passe o mouse)</span>
+          <span class="hover-hint">(Toque para ver)</span>
           <div class="crime-desc">
             Divulgação não consentida de imagens íntimas, chantagem sexual e aliciamento no ambiente digital.
             <div class="example-box">
@@ -344,7 +372,7 @@
         <div class="crime-card bottom-center-node">
           <div class="node-dot"></div>
           <div class="crime-title">Cyberbullying</div>
-          <span class="hover-hint">(Passe o mouse)</span>
+          <span class="hover-hint">(Toque para ver)</span>
           <div class="crime-desc">
             Intimidação, humilhação, perseguição e violência psicológica sistemática praticadas na internet.
             <div class="example-box">
@@ -362,5 +390,30 @@
     </div>
   </div>
 
+<script>
+  // toque e teclado: abre/fecha os quadros (no desktop o hover continua igual)
+  document.querySelectorAll('.crime-card').forEach((card) => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-expanded', 'false');
+    const alternar = () => {
+      const aberto = card.classList.contains('is-open');
+      document.querySelectorAll('.crime-card.is-open').forEach((c) => {
+        c.classList.remove('is-open');
+        c.setAttribute('aria-expanded', 'false');
+        if (c.parentElement) c.parentElement.classList.remove('is-open');
+      });
+      if (!aberto) {
+        card.classList.add('is-open');
+        card.setAttribute('aria-expanded', 'true');
+        if (card.parentElement) card.parentElement.classList.add('is-open');
+      }
+    };
+    card.addEventListener('click', alternar);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); }
+    });
+  });
+</script>
 </body>
 </html>
