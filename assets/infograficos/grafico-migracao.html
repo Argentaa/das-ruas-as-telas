@@ -153,10 +153,20 @@
       if (!eixoX) return;
       const passo = (chartArea.right - chartArea.left) / eixoX.ticks.length;
       const limite = Math.max(24, passo - 8);
+      const limiteAno = Math.max(24, passo - 2);        // o ano pode ocupar quase todo o passo
       const estreito = passo < 56;                       // não cabe nem "pandemia"
-      const fonteAno = passo < 62 ? 11 : 12;
+      let fonteAno = passo < 62 ? 11 : 12;
       const fonteDesc = passo < 62 ? 8 : 8.5;
       const alturaLinha = fonteDesc + 2.5;
+
+      // ajusta o corpo do ano para o rótulo mais largo caber inteiro no passo
+      ctx.font = `600 ${fonteAno}px Montserrat, Poppins, sans-serif`;
+      const maiorAno = Math.max(...eixoX.ticks.map((t) => ctx.measureText(String(t.label)).width));
+      const disponivelAno = Math.max(24, passo - 2);
+      if (maiorAno > disponivelAno) {
+        fonteAno = Math.max(9.5, +(fonteAno * disponivelAno / maiorAno).toFixed(1));
+      }
+      ctx.font = `600 ${fonteAno}px Montserrat, Poppins, sans-serif`;
       cfg.$caixas = [];
       ctx.save();
       ctx.textAlign = 'center';
@@ -170,10 +180,10 @@
       };
 
       // quebra por espaço e por hífen/travessão, sem colar palavras
-      const quebrar = (texto) => {
+      const quebrar = (texto, limiteUsado) => {
         const tokens = [];
         texto.split(' ').forEach((palavra) => {
-          if (ctx.measureText(palavra).width > limite && /[-–]/.test(palavra)) {
+          if (ctx.measureText(palavra).width > limiteUsado && /[-–]/.test(palavra)) {
             palavra.split(/(?<=[-–])/).forEach((p) => { if (p) tokens.push(p); });
           } else {
             tokens.push(palavra);
@@ -183,7 +193,7 @@
         let atual = '';
         tokens.forEach((t) => {
           const colado = !atual ? t : (/[-–]$/.test(atual) ? atual + t : atual + ' ' + t);
-          if (!atual || ctx.measureText(colado).width <= limite) { atual = colado; }
+          if (!atual || ctx.measureText(colado).width <= limiteUsado) { atual = colado; }
           else { linhas.push(atual); atual = t; }
         });
         if (atual) linhas.push(atual);
@@ -195,7 +205,7 @@
 
         ctx.font = `600 ${fonteAno}px Montserrat, Poppins, sans-serif`;
         ctx.fillStyle = '#9A0D1C';
-        const anoLinhas = quebrar(String(tick.label));
+        const anoLinhas = quebrar(String(tick.label), limiteAno);
         const alturaAno = fonteAno + 2;
         anoLinhas.forEach((linha, j) => {
           desenhar(linha, cx, chartArea.bottom + 8 + j * alturaAno, true, alturaAno);
@@ -204,7 +214,7 @@
         ctx.font = `400 ${fonteDesc}px Poppins, sans-serif`;
         ctx.fillStyle = '#666666';
         const d = descricoesEixo[i] || { longo: '', curto: '' };
-        const linhas = estreito ? [d.curto] : quebrar(d.longo);
+        const linhas = estreito ? [d.curto] : quebrar(d.longo, limite);
         const base = chartArea.bottom + 8 + anoLinhas.length * alturaAno + 3;
         linhas.forEach((linha, j) => {
           desenhar(linha, cx, base + j * alturaLinha, false, fonteDesc);
